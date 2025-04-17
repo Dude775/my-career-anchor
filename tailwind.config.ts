@@ -61,7 +61,23 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Custom colors for the questionnaire
+				quiz: {
+					primary: '#9b87f5',
+					secondary: '#7E69AB',
+					tertiary: '#6E59A5',
+					dark: '#1A1F2C',
+					light: '#D6BCFA',
+					soft: '#E5DEFF',
+					gray: '#F1F0FB',
+					sky: '#33C3F0',
+					coolGray: '#8E9196',
 				}
+			},
+			backgroundImage: {
+				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+				'gradient-quiz': 'linear-gradient(135deg, #9b87f5 0%, #33C3F0 100%)',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
