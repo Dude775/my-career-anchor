@@ -1,16 +1,19 @@
-
 import { AnchorResult, anchorResults } from "@/data/anchors";
 import { Button } from "@/components/ui/button";
 import { RefreshCcw } from "lucide-react";
 import { useEffect } from "react";
+import QuestionBreakdown from "./QuestionBreakdown";
+import { questions } from "@/data/questions";
 
 interface ResultProps {
   result: AnchorResult;
   allResults: Record<string, number>;
   onRestart: () => void;
+  ratings: Record<number, number>;
+  importantQuestions: number[];
 }
 
-const Result = ({ result, allResults, onRestart }: ResultProps) => {
+const Result = ({ result, allResults, onRestart, ratings, importantQuestions }: ResultProps) => {
   // מערך של הערכים בסדר יורד
   const sortedResults = Object.entries(allResults)
     .sort((a, b) => b[1] - a[1])
@@ -61,7 +64,13 @@ const Result = ({ result, allResults, onRestart }: ResultProps) => {
         </div>
       </section>
 
-      <div className="text-center">
+      <QuestionBreakdown 
+        questions={questions}
+        ratings={ratings}
+        importantQuestions={importantQuestions}
+      />
+
+      <div className="text-center mt-8">
         <Button onClick={onRestart} variant="outline" className="flex items-center gap-2">
           <RefreshCcw className="h-4 w-4" />
           התחל מחדש

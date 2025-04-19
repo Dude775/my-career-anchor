@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Question, questions, bonusQuestions, AnchorType } from "@/data/questions";
 import { anchorResults } from "@/data/anchors";
@@ -154,6 +153,8 @@ const QuestionnaireScreen = () => {
               result={anchorResults[topAnchor]}
               allResults={finalScores}
               onRestart={handleRestart}
+              ratings={ratings}
+              importantQuestions={importantQuestions}
             />
           );
         }
