@@ -1,3 +1,4 @@
+
 import { AnchorResult, anchorResults } from "@/data/anchors";
 import { Button } from "@/components/ui/button";
 import { RefreshCcw } from "lucide-react";
@@ -7,6 +8,7 @@ import { questions } from "@/data/questions";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { useLanguage } from "@/context/LanguageContext";
+import { AnchorType } from "@/data/questions";
 
 interface ResultProps {
   result: AnchorResult;
@@ -26,8 +28,8 @@ const Result = ({ result, allResults, onRestart, ratings, importantQuestions }: 
     window.scrollTo(0, 0);
   }, []);
 
-  const getAnchorExplanationEn = (type: keyof typeof anchorResults): string => {
-    const explanations: Record<keyof typeof anchorResults, string> = {
+  const getAnchorExplanationEn = (type: AnchorType): string => {
+    const explanations: Record<AnchorType, string> = {
       expertise: "Driven by expertise, competence, and the satisfaction found in mastering a specific field.",
       management: "Motivated by leadership, a desire to manage people and processes, make decisions, and drive an organization to success.",
       autonomy: "Driven by the need to work in their own way, by their own standards, without being constrained by rules, processes, or time structures.",
@@ -40,8 +42,8 @@ const Result = ({ result, allResults, onRestart, ratings, importantQuestions }: 
     return explanations[type];
   };
 
-  const getAnchorExplanationHe = (type: keyof typeof anchorResults): string => {
-    const explanations: Record<keyof typeof anchorResults, string> = {
+  const getAnchorExplanationHe = (type: AnchorType): string => {
+    const explanations: Record<AnchorType, string> = {
       expertise: "מניעים את האדם, כישרונו ושביעות הרצון שהוא מוצא בתחום ההתמחות שלו.",
       management: "מניע את האדם, רצונו להיות מנהל. יש לו שאיפה להתקדם בארגון, לנהל אנשים ותהליכים, להיות בין המובילים ובין מקבלי ההחלטות. להוביל את הארגון להצלחה.",
       autonomy: "מניע את האדם, הצורך לעשות דברים בדרכו, על פי סטנדרטים שלו, ולא להיות כבול בנהלים, תהליכים ומסגרות זמן שהארגון מכתיב.",
@@ -54,8 +56,8 @@ const Result = ({ result, allResults, onRestart, ratings, importantQuestions }: 
     return explanations[type];
   };
 
-  const getAnchorTitleEn = (type: keyof typeof anchorResults): string => {
-    const titles: Record<keyof typeof anchorResults, string> = {
+  const getAnchorTitleEn = (type: AnchorType): string => {
+    const titles: Record<AnchorType, string> = {
       expertise: "Technical/Functional Anchor",
       management: "Managerial Anchor",
       autonomy: "Autonomy/Independence Anchor",
@@ -101,7 +103,7 @@ const Result = ({ result, allResults, onRestart, ratings, importantQuestions }: 
         </h3>
         <div className="space-y-3">
           {sortedResults.map(([type, score], index) => {
-            const anchorType = type as keyof typeof allResults;
+            const anchorType = type as AnchorType;
             const anchorName = language === 'he' 
               ? anchorResults[anchorType]?.title 
               : getAnchorTitleEn(anchorType);
@@ -132,12 +134,12 @@ const Result = ({ result, allResults, onRestart, ratings, importantQuestions }: 
             {Object.entries(anchorResults).map(([type, anchor]) => (
               <div key={type} className={`text-${language === 'he' ? 'right' : 'left'}`}>
                 <h4 className="font-bold mb-2">
-                  {language === 'he' ? anchor.title : getAnchorTitleEn(type as keyof typeof anchorResults)}:
+                  {language === 'he' ? anchor.title : getAnchorTitleEn(type as AnchorType)}:
                 </h4>
                 <p>
                   {language === 'he' 
-                    ? getAnchorExplanationHe(type as keyof typeof anchorResults) 
-                    : getAnchorExplanationEn(type as keyof typeof anchorResults)}
+                    ? getAnchorExplanationHe(type as AnchorType) 
+                    : getAnchorExplanationEn(type as AnchorType)}
                 </p>
               </div>
             ))}
