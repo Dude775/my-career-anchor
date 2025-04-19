@@ -2,8 +2,9 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Question } from "@/data/questions";
-import { Check, ArrowLeft } from "lucide-react";
+import { Check, ArrowLeft, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface ImportantQuestionsProps {
   highestRatedQuestions: { question: Question; rating: number }[];
@@ -15,12 +16,12 @@ const ImportantQuestions = ({
   onSelectImportant
 }: ImportantQuestionsProps) => {
   const [selectedQuestions, setSelectedQuestions] = useState<number[]>([]);
+  const { language } = useLanguage();
 
   const toggleQuestion = (id: number) => {
     if (selectedQuestions.includes(id)) {
       setSelectedQuestions(selectedQuestions.filter(qId => qId !== id));
     } else {
-      // רק אם לא נבחרו כבר 3 שאלות
       if (selectedQuestions.length < 3) {
         setSelectedQuestions([...selectedQuestions, id]);
       }
@@ -35,16 +36,23 @@ const ImportantQuestions = ({
 
   return (
     <div className="quiz-card animate-fade-in">
-      <h2 className="quiz-heading">כמעט סיימנו!</h2>
-      <p className="quiz-subheading">בחר את 3 המשפטים שהכי מתאימים לך:</p>
+      <h2 className="quiz-heading">
+        {language === 'he' ? 'כמעט סיימנו!' : 'Almost there!'}
+      </h2>
+      <p className="quiz-subheading" dir={language === 'he' ? 'rtl' : 'ltr'}>
+        {language === 'he' 
+          ? 'בחר את 3 המשפטים שהכי מתאימים לך:'
+          : 'Select the 3 statements that resonate with you the most:'}
+      </p>
       
-      <div className="space-y-3 mb-8 text-right">
+      <div className="space-y-3 mb-8" dir={language === 'he' ? 'rtl' : 'ltr'}>
         {highestRatedQuestions.map(({ question }) => (
           <div
             key={question.id}
             onClick={() => toggleQuestion(question.id)}
             className={cn(
               "flex items-center gap-3 p-4 rounded-lg cursor-pointer transition-all duration-200",
+              "text-right",
               selectedQuestions.includes(question.id)
                 ? "bg-quiz-primary bg-opacity-20 border-2 border-quiz-primary"
                 : "bg-quiz-gray border-2 border-transparent hover:border-quiz-light"
@@ -58,19 +66,30 @@ const ImportantQuestions = ({
             )}>
               {selectedQuestions.includes(question.id) && <Check className="w-4 h-4" />}
             </div>
-            <p className="font-medium">{question.text}</p>
+            <p className="font-medium">
+              {language === 'he' ? question.text : question.textEn}
+            </p>
           </div>
         ))}
       </div>
       
-      <div className="flex justify-end">
+      <div className={`flex ${language === 'he' ? 'justify-end' : 'justify-start'}`}>
         <Button 
           onClick={handleSubmit}
           disabled={selectedQuestions.length !== 3}
           className="quiz-button border-0 flex items-center gap-2"
         >
-          הצג תוצאות
-          <ArrowLeft className="h-4 w-4" />
+          {language === 'he' ? (
+            <>
+              הצג תוצאות
+              <ArrowLeft className="h-4 w-4" />
+            </>
+          ) : (
+            <>
+              Show Results
+              <ArrowRight className="h-4 w-4" />
+            </>
+          )}
         </Button>
       </div>
     </div>
