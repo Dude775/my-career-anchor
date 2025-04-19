@@ -1,4 +1,3 @@
-
 export interface Question {
   id: number;
   text: string;
@@ -20,63 +19,62 @@ export interface BonusQuestion {
   text: string;
 }
 
-// 40 שאלות עיקריות מחולקות ל-8 עוגנים
 export const questions: Question[] = [
   // עוגן ההתמחות המקצועית
-  { id: 1, text: "חשוב לי להיות מומחה בתחום מסוים.", anchorType: "expertise" },
-  { id: 2, text: "אני הכי מרוצה כשאני עובד על משהו שאני ממש טוב בו.", anchorType: "expertise" },
-  { id: 3, text: "חשוב לי ללמוד ולהתפתח בתחום שלי.", anchorType: "expertise" },
-  { id: 4, text: "יש תחום ספציפי שבו אני מרגיש שאני ממש פורח.", anchorType: "expertise" },
-  { id: 5, text: "אני אוהב להיות ה\"מקצוען\" שאליו פונים להתייעצות.", anchorType: "expertise" },
+  { id: 1, text: "אני שואף להיות מומחה בתחום שלי, כזה שתמיד מחפשים את דעתו.", anchorType: "expertise" },
+  { id: 9, text: "אני רוצה לפתח את הכישורים שלי לרמה הכי גבוהה שיש.", anchorType: "expertise" },
+  { id: 17, text: "אני מעדיף להיות מומחה בתחום שלי מאשר מנכ\"ל.", anchorType: "expertise" },
+  { id: 25, text: "אם יזיזו אותי מהתחום המקצועי שלי – אעדיף לעזוב.", anchorType: "expertise" },
+  { id: 33, text: "אני מרגיש שאני מצליח כשאני משתמש בכישורים הייחודיים שלי.", anchorType: "expertise" },
 
   // עוגן הניהול
-  { id: 6, text: "חשוב לי להוביל אנשים ולקבל החלטות.", anchorType: "management" },
-  { id: 7, text: "אני תמיד מכוון לעמדות שבהן אני יכול להשפיע.", anchorType: "management" },
-  { id: 8, text: "עושה לי טוב להיות זה שמנהל את העניינים.", anchorType: "management" },
-  { id: 9, text: "אני רוצה להשפיע ברמת ההנהלה ולא רק לעשות מה שאומרים לי.", anchorType: "management" },
-  { id: 10, text: "אני רואה את עצמי מתקדם לתפקידים ניהוליים.", anchorType: "management" },
+  { id: 2, text: "אני מרגיש שאני פורח כשאני מנהל אנשים ומוביל אותם להצלחה.", anchorType: "management" },
+  { id: 10, text: "יש לי שאיפה לנהל ארגון גדול ולהשפיע על הרבה אנשים.", anchorType: "management" },
+  { id: 18, text: "פסגת הקריירה בשבילי זה להיות מנכ\"ל.", anchorType: "management" },
+  { id: 26, text: "מעניין אותי יותר להיות מנכ\"ל מאשר מומחה בכיר.", anchorType: "management" },
+  { id: 34, text: "אם אין לי אופק להתקדם – זה סימן שאני צריך לזוז.", anchorType: "management" },
 
   // עוגן האוטונומיה
-  { id: 11, text: "אני צריך מרחב וחופש פעולה.", anchorType: "autonomy" },
-  { id: 12, text: "לא אוהב שאומרים לי איך לעשות את העבודה שלי.", anchorType: "autonomy" },
-  { id: 13, text: "חשוב לי לנהל את היום שלי בצורה עצמאית.", anchorType: "autonomy" },
-  { id: 14, text: "אני פורח כשאין לי בוסים על הראש.", anchorType: "autonomy" },
-  { id: 15, text: "אני חייב שהעבודה שלי תאפשר לי ביטוי אישי.", anchorType: "autonomy" },
+  { id: 3, text: "חשוב לי חופש – שהעבודה תיתן לי לפעול בדרך שלי.", anchorType: "autonomy" },
+  { id: 11, text: "חשוב לי להגדיר לבד את הדרך בה אני עובד.", anchorType: "autonomy" },
+  { id: 19, text: "רק אם יהיה לי חופש מלא – אני ארגיש שאני מצליח.", anchorType: "autonomy" },
+  { id: 27, text: "עצמאות בעבודה יותר חשובה לי מביטחון תעסוקתי.", anchorType: "autonomy" },
+  { id: 35, text: "אם יגבילו לי את החופש – אני לא אשאר.", anchorType: "autonomy" },
 
   // עוגן הביטחון
-  { id: 16, text: "חשוב לי לדעת שיש לי יציבות וביטחון בעבודה.", anchorType: "security" },
-  { id: 17, text: "אני מעדיף משרה מסודרת וארוכת טווח.", anchorType: "security" },
-  { id: 18, text: "שקט נפשי בעבודה חשוב לי יותר מכל דבר.", anchorType: "security" },
-  { id: 19, text: "אני צריך לדעת בדיוק מה מצפים ממני בכל יום.", anchorType: "security" },
-  { id: 20, text: "אני מרגיש טוב כשיש לי גב כלכלי יציב.", anchorType: "security" },
+  { id: 4, text: "אני מעדיף יציבות תעסוקתית גם אם זה בא על חשבון החופש.", anchorType: "security" },
+  { id: 12, text: "אם יציעו לי תפקיד שיפגע ביציבות שלי – זה דיל ברייקר.", anchorType: "security" },
+  { id: 20, text: "חשוב לי לעבוד במקום יציב ובטוח.", anchorType: "security" },
+  { id: 28, text: "אני נרגע כשיש לי יציבות כלכלית וביטחון תעסוקתי.", anchorType: "security" },
+  { id: 36, text: "אני רוצה קריירה עם תחושת ביטחון ויציבות.", anchorType: "security" },
 
   // עוגן היזמות
-  { id: 21, text: "תמיד יש לי רעיונות חדשים לעסקים או פרויקטים.", anchorType: "entrepreneurship" },
-  { id: 22, text: "אני חולם להקים עסק משלי.", anchorType: "entrepreneurship" },
-  { id: 23, text: "הכי עושה לי את זה ליצור משהו חדש מההתחלה.", anchorType: "entrepreneurship" },
-  { id: 24, text: "אני נהנה לקחת סיכונים מחושבים.", anchorType: "entrepreneurship" },
-  { id: 25, text: "חשוב לי ליזום, לפתח ולהביא דברים חדשים לעולם.", anchorType: "entrepreneurship" },
+  { id: 5, text: "תמיד מדגדג לי להקים עסק משלי.", anchorType: "entrepreneurship" },
+  { id: 13, text: "להקים משהו משלי מושך אותי יותר מאשר תפקיד בכיר אצל אחרים.", anchorType: "entrepreneurship" },
+  { id: 21, text: "אני הכי מסופק כשאני בונה משהו מאפס, מרעיון שלי.", anchorType: "entrepreneurship" },
+  { id: 29, text: "אני רוצה שהקריירה שלי תוביל ליצירה מקורית משלי.", anchorType: "entrepreneurship" },
+  { id: 37, text: "אני חולם להקים עסק מהקרקע.", anchorType: "entrepreneurship" },
 
   // עוגן השירות
-  { id: 26, text: "חשוב לי להרגיש שאני עושה משהו לטובת החברה.", anchorType: "service" },
-  { id: 27, text: "אני נהנה לעזור לאחרים ולהשפיע לטובה.", anchorType: "service" },
-  { id: 28, text: "ערכים חברתיים מנחים את הבחירות שלי בקריירה.", anchorType: "service" },
-  { id: 29, text: "אני מחפש עבודה שתורמת לאחרים.", anchorType: "service" },
-  { id: 30, text: "חשוב לי להשאיר חותם חיובי בעולם.", anchorType: "service" },
+  { id: 6, text: "אני רוצה שהעבודה שלי תתרום לחברה ולרווחת אנשים.", anchorType: "service" },
+  { id: 14, text: "אני רוצה לתרום מהיכולות שלי כדי לעזור לאחרים.", anchorType: "service" },
+  { id: 22, text: "חשוב לי להשתמש בכישרון שלי כדי להפוך את העולם למקום טוב יותר.", anchorType: "service" },
+  { id: 30, text: "אני רוצה שהעבודה שלי תעשה הבדל בעולם.", anchorType: "service" },
+  { id: 38, text: "אם אמנע מלתת שירות לאחרים – אני אעדיף לעזוב.", anchorType: "service" },
 
   // עוגן האתגר
-  { id: 31, text: "אני חי על אדרנלין של אתגרים חדשים.", anchorType: "challenge" },
-  { id: 32, text: "עבודה קלה מדי משעממת אותי מהר.", anchorType: "challenge" },
-  { id: 33, text: "אני אוהב לפצח בעיות קשות.", anchorType: "challenge" },
-  { id: 34, text: "תמיד מחפש משהו חדש להתנסות בו.", anchorType: "challenge" },
-  { id: 35, text: "אני צריך עניין ואתגר קבועים בחיים.", anchorType: "challenge" },
+  { id: 7, text: "מרגש אותי לפתור בעיות מורכבות שאף אחד לא הצליח לפצח.", anchorType: "challenge" },
+  { id: 15, text: "אני אוהב אתגר – כשקשה, אני נדלק.", anchorType: "challenge" },
+  { id: 23, text: "אני מרגיש סיפוק כשאני פותר בעיה מסובכת שאף אחד לא פתר.", anchorType: "challenge" },
+  { id: 31, text: "אני מחפש אתגרים שמפעילים לי את הראש.", anchorType: "challenge" },
+  { id: 39, text: "לפתור בעיות קשות שווה לי יותר מתפקיד ניהולי בכיר.", anchorType: "challenge" },
 
   // עוגן סגנון החיים
-  { id: 36, text: "הכי חשוב לי לאזן בין עבודה, משפחה וחיים אישיים.", anchorType: "lifestyle" },
-  { id: 37, text: "העבודה צריכה להשתלב בצורה נוחה עם שאר החיים שלי.", anchorType: "lifestyle" },
-  { id: 38, text: "לא אקריב את החיים הפרטיים בשביל קריירה.", anchorType: "lifestyle" },
-  { id: 39, text: "אני מחפש עבודה גמישה מבחינת שעות ומיקום.", anchorType: "lifestyle" },
-  { id: 40, text: "אני חייב שהעבודה שלי תתאים לסגנון החיים שאני רוצה.", anchorType: "lifestyle" },
+  { id: 8, text: "אם העבודה תפריע לי יותר מדי לחיים האישיים – אני שוקל לעזוב.", anchorType: "lifestyle" },
+  { id: 16, text: "חשוב לי קריירה שמשתלבת עם המשפחה והחיים.", anchorType: "lifestyle" },
+  { id: 24, text: "בלי איזון בין הקריירה לחיים – אין לי שקט.", anchorType: "lifestyle" },
+  { id: 32, text: "איזון בין עבודה לחיים חשוב לי יותר מקידום לניהול בכיר.", anchorType: "lifestyle" },
+  { id: 40, text: "אני תמיד מחפש עבודה שלא תתנגש לי עם החיים האישיים.", anchorType: "lifestyle" },
 ];
 
 // 5 שאלות בונוס לסיום
