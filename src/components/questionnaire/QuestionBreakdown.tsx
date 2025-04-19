@@ -4,27 +4,36 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Question } from '@/data/questions';
 import { Check } from 'lucide-react';
+import { Language } from "@/context/LanguageContext";
 
 interface QuestionBreakdownProps {
   questions: Question[];
   ratings: Record<number, number>;
   importantQuestions: number[];
+  language: Language;
 }
 
 const QuestionBreakdown: React.FC<QuestionBreakdownProps> = ({
   questions,
   ratings,
-  importantQuestions
+  importantQuestions,
+  language
 }) => {
   return (
     <div className="mt-8">
-      <h3 className="text-xl font-bold text-right mb-4">פירוט התשובות שלך</h3>
+      <h3 className={`text-xl font-bold text-${language === 'he' ? 'right' : 'left'} mb-4`}>
+        {language === 'he' ? 'פירוט התשובות שלך' : 'Your Question Scores'}
+      </h3>
       <ScrollArea className="h-[400px] rounded-md border">
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead className="text-right">מספר שאלה</TableHead>
-              <TableHead className="text-right">ציון סופי</TableHead>
+              <TableHead className={`text-${language === 'he' ? 'right' : 'left'}`}>
+                {language === 'he' ? 'מספר שאלה' : 'Question #'}
+              </TableHead>
+              <TableHead className={`text-${language === 'he' ? 'right' : 'left'}`}>
+                {language === 'he' ? 'ציון סופי' : 'Final Score'}
+              </TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -35,9 +44,11 @@ const QuestionBreakdown: React.FC<QuestionBreakdownProps> = ({
               
               return (
                 <TableRow key={question.id}>
-                  <TableCell className="text-right">{question.id}</TableCell>
-                  <TableCell className="text-right">
-                    <span className={`${isImportant ? 'font-bold' : ''} flex items-center gap-2 justify-end`}>
+                  <TableCell className={`text-${language === 'he' ? 'right' : 'left'}`}>
+                    {question.id}
+                  </TableCell>
+                  <TableCell className={`text-${language === 'he' ? 'right' : 'left'}`}>
+                    <span className={`${isImportant ? 'font-bold' : ''} flex items-center gap-2 ${language === 'he' ? 'justify-end' : 'justify-start'}`}>
                       {finalScore}
                       {isImportant && <Check className="h-4 w-4 text-green-500" />}
                     </span>
