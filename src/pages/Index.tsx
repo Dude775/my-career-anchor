@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Question, questions, bonusQuestions, AnchorType } from "@/data/questions";
 import { anchorResults } from "@/data/anchors";
 import QuestionCard from "@/components/questionnaire/QuestionCard";
