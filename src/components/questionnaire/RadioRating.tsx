@@ -1,4 +1,6 @@
 
+import { cn } from "@/lib/utils";
+
 interface RadioRatingProps {
   value: number | null;
   onChange: (value: number) => void;
