@@ -101,22 +101,33 @@ const Result = ({ result, allResults, onRestart, ratings, importantQuestions }: 
         <h3 className={`font-bold text-xl mb-3 text-${language === 'he' ? 'right' : 'left'}`}>
           {language === 'he' ? 'התוצאות המלאות שלך' : 'Your Complete Results'}
         </h3>
-        <div className="space-y-3">
+        <div className="space-y-4">
           {sortedResults.map(([type, score], index) => {
             const anchorType = type as AnchorType;
             const anchorName = language === 'he' 
               ? anchorResults[anchorType]?.title 
               : getAnchorTitleEn(anchorType);
             
+            const maxScore = sortedResults[0][1];
+            const percentage = Math.round((score / maxScore) * 100);
+            
             return (
-              <div key={type} className="flex items-center justify-between">
-                <div className="bg-gradient-quiz h-2 rounded-full" style={{ 
-                  width: `${Math.round((score / sortedResults[0][1]) * 100)}%`,
-                  opacity: index === 0 ? 1 : index === 1 ? 0.7 : 0.5
-                }}></div>
-                <span className={`mr-2 flex-shrink-0 font-medium flex items-center gap-2 ${language === 'en' ? 'order-first' : ''}`}>
-                  {anchorName} - {score} {language === 'he' ? 'נקודות' : 'points'}
-                </span>
+              <div key={type} className={`flex items-center gap-4 ${language === 'he' ? 'flex-row-reverse' : 'flex-row'}`}>
+                <div className="w-full max-w-[60%] bg-gray-100 rounded-full h-2">
+                  <div 
+                    className="bg-gradient-quiz h-full rounded-full transition-all duration-500" 
+                    style={{ 
+                      width: `${percentage}%`,
+                      opacity: index === 0 ? 1 : index === 1 ? 0.85 : 0.7
+                    }}
+                  />
+                </div>
+                <div className={`flex items-center gap-2 whitespace-nowrap ${language === 'he' ? 'mr-auto' : 'ml-auto'}`}>
+                  <span className="font-medium">{anchorName}</span>
+                  <span className="text-gray-600">
+                    {score} {language === 'he' ? 'נקודות' : 'pts'}
+                  </span>
+                </div>
               </div>
             );
           })}
